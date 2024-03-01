@@ -1,0 +1,33 @@
+{
+  "root": true,
+  "env": {
+    "es2021": true,
+    "node": true
+  },
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended",  "plugin:prettier/recommended"],
+  "ignorePatterns": ["build", ".eslintrc.json"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["simple-import-sort", "@typescript-eslint"],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off",
+    "no-console": "warn",
+    "prettier/prettier": ["error", {}, { "usePrettierrc": true }],
+    "simple-import-sort/exports": "error",
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          ["^\\u0000"],
+          ["^"],
+          ["^(@modules|@common|@src|@api-docs)(/.*|$)"],
+          ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"]
+        ]
+      }
+    ]
+  }
+}
